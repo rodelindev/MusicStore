@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MusicStore.Api/MusicStore.Api.csproj" />
+    <Project Path="src/MusicStore.Dto/MusicStore.Dto.csproj" />
+    <Project Path="src/MusicStore.Entities/MusicStore.Entities.csproj" />
+    <Project Path="src/MusicStore.Persistance/MusicStore.Persistance.csproj" />
+    <Project Path="src/MusicStore.Repositories/MusicStore.Repositories.csproj" />
+    <Project Path="src/MusicStore.Services/MusicStore.Services.csproj" />
+  </Folder>
+</Solution>
