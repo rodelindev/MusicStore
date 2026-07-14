@@ -1,6 +1,7 @@
-@MusicStore.Api_HostAddress = http://localhost:5020
+@MusicStore.Api_HostAddress = https://localhost:7084
+@MusicStore = https://localhost:7084
 
-GET {{MusicStore.Api_HostAddress}}/weatherforecast/
+GET {{MusicStore}}/weatherforecast/
 Accept: application/json
 
 ###
