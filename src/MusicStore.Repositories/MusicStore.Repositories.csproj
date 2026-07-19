@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MusicStore.Persistence\MusicStore.Persistence.csproj" />
+    <ProjectReference Include="..\MusicStore.Persistance\MusicStore.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

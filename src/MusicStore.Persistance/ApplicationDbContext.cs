@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using MusicStore.Entities;
 
-namespace MusicStore.Persistence;
+namespace MusicStore.Persistance;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
@@ -9,13 +10,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
-        /*modelBuilder.Entity<Genre>(x => x.ToTable("genres"));
-        modelBuilder.Entity<Genre>(x => x.ToTable("genres"));
-        modelBuilder.Entity<Genre>(x => x.ToTable("genres"));
-        modelBuilder.Entity<Genre>(x => x.ToTable("genres"));
-        modelBuilder.Entity<Genre>(x => x.ToTable("genres"));
-        modelBuilder.Entity<Genre>(x => x.ToTable("genres"));*/
     }
     //public DbSet<Genre> Genres { get; set; }
 }
