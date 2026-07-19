@@ -1,4 +1,4 @@
-﻿using MusicStore.Persistance;
+﻿using MusicStore.Persistence;
 
 namespace MusicStore.Repositories;
 

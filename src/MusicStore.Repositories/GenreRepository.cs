@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using MusicStore.Entities;
-using MusicStore.Persistance;
+using MusicStore.Persistence;
+using MusicStore.Persistence.Projections;
 
 namespace MusicStore.Repositories;
 
