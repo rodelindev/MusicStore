@@ -12,8 +12,8 @@ namespace MusicStore.Services;
 public class GenreService(
     IGenreRepository _repository,
     ILogger<GenreService> _logger,
-    IMapper _mapper,
-    IUnitOfWork _unitOfWork
+    IMapper _mapper
+    //IUnitOfWork _unitOfWork
 ) : IGenreService {
     
     public async Task<IReadOnlyList<GenreResponseDto>> GetAsync()
