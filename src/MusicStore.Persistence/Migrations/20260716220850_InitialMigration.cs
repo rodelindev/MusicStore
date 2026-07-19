@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MusicStore.Persistance.Migrations
+namespace MusicStore.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

@@ -9,8 +9,8 @@ public static class QueryableExtensions
     public static async Task<PaginatedResult<T>> ToPaginatedAsync<T>(
         this IQueryable<T> query,
         int page,
-        int pageSize)
-        where T : EntityBase<int>
+        int pageSize
+    ) where T : EntityBase<int>
     {
         var total = await query.CountAsync();
         var items = await query
