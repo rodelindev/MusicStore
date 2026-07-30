@@ -8,13 +8,13 @@ using MusicStore.Services.Mappings;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//CORS
+// CORS
 const string corsConfiguration = "MusicStoreCors";
 builder.Services.AddCors(setup =>
 {
     setup.AddPolicy(corsConfiguration, policy =>
     {
-        policy.AllowAnyOrigin(); // Que cualquiera pueda consumir el API
+        policy.AllowAnyOrigin();
         policy.AllowAnyHeader().WithExposedHeaders("TotalRecordsQuantity");
         policy.AllowAnyMethod();
     });
@@ -27,7 +27,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Connection string
+// SQL Server Connection string
 var connectionString = builder.Configuration.GetConnectionString("defaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
@@ -37,12 +37,16 @@ builder.Services.AddScoped<IConcertRepository, ConcertRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 
-// Dependency Injection Unit Of Work
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 // Services Dependency Injection
 builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IConcertService, ConcertService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IFileStorage, FileStorageAzure>();
+//builder.Services.AddScoped<IFileStorage, FileStorageLocal>();
+
+// Dependency Injection Unit Of Work
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Auto Mapper
 builder.Services.AddAutoMapper(config =>

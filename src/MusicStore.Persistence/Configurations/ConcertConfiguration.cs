@@ -19,6 +19,6 @@ public class ConcertConfiguration : IEntityTypeConfiguration<Concert>
             .IsUnicode(false);
         builder.HasIndex(x => x.Title);
         builder.HasQueryFilter(x => x.Status);
-        builder.ToTable("Concert", "MusicStore");
+        builder.ToTable(nameof(Concert), "MusicStore");
     }
 }

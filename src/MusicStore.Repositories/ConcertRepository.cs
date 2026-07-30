@@ -70,9 +70,7 @@ public class ConcertRepository : RepositoryBase<Concert, int>, IConcertRepositor
         WHERE c.Status = 1 AND
             (@title IS NULL OR c.Title LIKE '%' + @title + '%')
         ORDER BY c.Id";
-
         
-
         var parameter = new SqlParameter("@title", string.IsNullOrWhiteSpace(title) ? DBNull.Value : title);
 
         return await _context

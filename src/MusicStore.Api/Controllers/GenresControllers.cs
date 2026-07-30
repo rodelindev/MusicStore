@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MusicStore.Dto.Request;
 using MusicStore.Dto.Response;
 using MusicStore.Services;
@@ -24,7 +25,7 @@ public class GenresController(IGenreService _service) : ControllerBase
     }
 
     [HttpPost]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public async Task<ActionResult<GenreResponseDto>> Post(
         [FromBody] GenreRequestDto request)
     {
@@ -38,7 +39,7 @@ public class GenresController(IGenreService _service) : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public async Task<ActionResult<GenreResponseDto>> Put(
         int id,
         [FromBody] GenreRequestDto request

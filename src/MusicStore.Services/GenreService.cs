@@ -14,8 +14,8 @@ public class GenreService(
     ILogger<GenreService> _logger,
     IMapper _mapper,
     IUnitOfWork _unitOfWork
-) : IGenreService {
-    
+) : IGenreService
+{
     public async Task<IReadOnlyList<GenreResponseDto>> GetAsync()
     {
         var entities = await _repository
@@ -44,7 +44,7 @@ public class GenreService(
         var entity = _mapper.Map<Genre>(request);
 
         var created = await _repository.AddAsync(entity);
-        //await _unitOfWork.CommitAsync();
+        await _unitOfWork.CommitAsync();
         return _mapper.Map<GenreResponseDto>(created);
     }
 
@@ -61,7 +61,7 @@ public class GenreService(
         _mapper.Map(request, entity);
 
         var updated = await _repository.UpdateAsync(entity);
-        //await _unitOfWork.CommitAsync();
+        await _unitOfWork.CommitAsync();
 
         return _mapper.Map<GenreResponseDto>(updated);
     }
@@ -77,6 +77,6 @@ public class GenreService(
         }
 
         await _repository.DeleteAsync(id);
-        //await _unitOfWork.CommitAsync();
+        await _unitOfWork.CommitAsync();
     }
 }
