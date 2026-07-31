@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // CORS
-const string corsConfiguration = "MusicStoreCors";
+/*const string corsConfiguration = "MusicStoreCors";
 builder.Services.AddCors(setup =>
 {
     setup.AddPolicy(corsConfiguration, policy =>
@@ -24,7 +24,7 @@ builder.Services.AddCors(setup =>
         policy.AllowAnyHeader().WithExposedHeaders("TotalRecordsQuantity");
         policy.AllowAnyMethod();
     });
-});
+});*/
 
 // Add services to the container.
 builder.Services.AddOpenApi();
@@ -87,6 +87,7 @@ builder.Services.AddScoped<IConcertService, ConcertService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFileStorage, FileStorageAzure>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Dependency Injection Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -111,6 +112,7 @@ var app = builder.Build();
 // Middleware Error handler
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+// Initial Data Seeders
 await ApplyMigrationsAndSeedAsync(app);
 
 // Configure the HTTP request pipeline.
