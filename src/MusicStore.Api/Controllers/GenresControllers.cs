@@ -43,13 +43,14 @@ public class GenresController(IGenreService _service) : ControllerBase
     public async Task<ActionResult<GenreResponseDto>> Put(
         int id,
         [FromBody] GenreRequestDto request
-    ) {
+    )
+    {
         var updated = await _service.UpdateAsync(id, request);
         return Ok(updated);
     }
 
     [HttpDelete("{id:int}")]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public async Task<IActionResult> Delete(int id)
     {
         await _service.DeleteAsync(id);

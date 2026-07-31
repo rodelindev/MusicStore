@@ -10,8 +10,12 @@ public class FileStorageLocal(
     IHttpContextAccessor httpContextAccessor
 ) : IFileStorage
 {
-    public async Task<string> SaveFile(byte[] content, string extension, string container, string contentType)
-    {
+    public async Task<string> SaveFile(
+        byte[] content,
+        string extension,
+        string container,
+        string contentType
+    ) {
         string databaseUrl = string.Empty;
         try
         {
@@ -36,9 +40,13 @@ public class FileStorageLocal(
         return databaseUrl;
     }
 
-    public async Task<string> EditFile(byte[] content, string extension, string container, string path,
-        string contentType)
-    {
+    public async Task<string> EditFile(
+        byte[] content,
+        string extension,
+        string container,
+        string path,
+        string contentType
+    ) {
         await DeleteFile(path, container);
         return await SaveFile(content, extension, container, contentType);
     }

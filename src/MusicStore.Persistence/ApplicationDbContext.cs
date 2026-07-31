@@ -19,12 +19,12 @@ public class ApplicationDbContext(DbContextOptions options) : IdentityDbContext<
             entity.HasNoKey();
             entity.ToView(null);
         });
-        
         modelBuilder.Entity<SaleReportView>(entity =>
         {
             entity.HasNoKey();
             entity.ToView(null);
         });
+        
         modelBuilder.Entity<MusicStoreUserIdentity>(x => x.ToTable("Users"));
         modelBuilder.Entity<IdentityRole>(x => x.ToTable("Roles"));
         modelBuilder.Entity<IdentityUserRole<string>>(x => x.ToTable("UserRoles"));

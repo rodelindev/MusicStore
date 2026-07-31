@@ -4,12 +4,12 @@ using MusicStore.Entities;
 
 namespace MusicStore.Persistence.Seeders;
 
-public class UserDataSeeder(IServiceProvider serviceProvider)
+public class UserDataSeeder(IServiceProvider _serviceProvider)
 {
     public async Task SeedAsync()
     {
-        var userManager = serviceProvider.GetRequiredService<UserManager<MusicStoreUserIdentity>>();
-        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = _serviceProvider.GetRequiredService<UserManager<MusicStoreUserIdentity>>();
+        var roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
         var adminRole = new IdentityRole("Administrator");
         var customerRole = new IdentityRole("Customer");

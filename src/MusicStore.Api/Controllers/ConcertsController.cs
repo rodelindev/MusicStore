@@ -15,23 +15,22 @@ public class ConcertsController(IConcertService _service) : ControllerBase
     public async Task<ActionResult<PaginatedResult<ConcertResponseDto>>> Get(
         [FromQuery] string? title,
         [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 10)
-    {
+        [FromQuery] int pageSize = 10
+    ) {
         var result = await _service.GetAsync(title, page, pageSize);
         return Ok(result);
     }
-    
+
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ConcertResponseDto>> Get(int id)
     {
         var result = await _service.GetAsync(id);
         return Ok(result);
     }
-    
+
     [HttpPost]
     [Authorize(Roles = "Administrator")]
-    public async Task<ActionResult<ConcertResponseDto>> Post(
-        [FromForm] ConcertRequestDto request)
+    public async Task<ActionResult<ConcertResponseDto>> Post([FromForm] ConcertRequestDto request)
     {
         var created = await _service.AddAsync(request);
 
@@ -40,17 +39,15 @@ public class ConcertsController(IConcertService _service) : ControllerBase
             new { id = created.Id },
             created);
     }
-    
+
     [HttpPut("{id:int}")]
     [Authorize(Roles = "Administrator")]
-    public async Task<ActionResult<ConcertResponseDto>> Put(
-        int id,
-        [FromForm] ConcertRequestDto request)
+    public async Task<ActionResult<ConcertResponseDto>> Put(int id, [FromForm] ConcertRequestDto request)
     {
         var updated = await _service.UpdateAsync(id, request);
         return Ok(updated);
     }
-    
+
     [HttpDelete("{id:int}")]
     [Authorize(Roles = "Administrator")]
     public async Task<IActionResult> Delete(int id)
@@ -58,7 +55,7 @@ public class ConcertsController(IConcertService _service) : ControllerBase
         await _service.DeleteAsync(id);
         return NoContent();
     }
-    
+
     [HttpPatch("{id:int}/finalize")]
     [Authorize(Roles = "Administrator")]
     public async Task<IActionResult> Finalize(int id)
