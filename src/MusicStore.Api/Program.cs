@@ -14,18 +14,6 @@ using MusicStore.Services.Mappings;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// CORS
-/*const string corsConfiguration = "MusicStoreCors";
-builder.Services.AddCors(setup =>
-{
-    setup.AddPolicy(corsConfiguration, policy =>
-    {
-        policy.AllowAnyOrigin();
-        policy.AllowAnyHeader().WithExposedHeaders("TotalRecordsQuantity");
-        policy.AllowAnyMethod();
-    });
-});*/
-
 // Add services to the container.
 builder.Services.AddOpenApi();
 
